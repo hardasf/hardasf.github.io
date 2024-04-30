@@ -14,5 +14,4 @@ http://chatwithai-official.zya.me/
 ```url
 http://yafb.zya.me
 ```
-##thanks for visiting 
-
+## tynks for visiting 
