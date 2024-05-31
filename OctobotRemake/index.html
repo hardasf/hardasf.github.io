@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCTOBOTREMAKE AUTO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="splash">
+        <h2>⏳</h2>
+    </div>
+    
+    <div class="navbar">
+        <img style="width:100%" src="https://i.imgur.com/uMuopp3.png" border="0">
+    </div>
+
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="appState">Appstate</label>
+            <textarea id="appState" name="appState" rows="5" required></textarea>
+            <label for="admin_uid" required>Admin UID:</label>
+            <input type="text" id="admin_uid" name="admin_uid">
+            <label for="prefix">Prefix:</label>
+            <input type="text" id="prefix" name="prefix">
+            
+            <button type="submit"><img style="width: 100px" src="https://i.imgur.com/Hi7NNZW.png" border="0"></button>
+        </form>
+
+        <div class="box" id="activeSessions">
+            <h1>Active Sessions</h1>
+        </div>
+
+        <div class="box log-box" id="logs">
+            <h1>Logs</h1>
+        </div>
+    </div>
+
+    <div class="footer">
+       Made with ❤️ | © Rejard 2024
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="script.js"></script>
+</body>
+</html>

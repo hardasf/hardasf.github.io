@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar, .footer {
+    background-color: transparent;
+    color: black;
+    padding: 3px 0;
+    text-align: center;
+    position: sticky;
+    width: 100%;
+}
+.navbar {
+    top: 0;
+}
+.footer {
+    bottom: 0;
+}
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 70px auto 70px auto; /* Adjusted to accommodate sticky header and footer */
+}
+h1 {
+    text-align: center;
+}
+#loginForm {
+    background: #f4f4f4; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+label {
+    font-weight: bold;
+}
+input, textarea{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+button {
+    background: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+button:hover {
+    background: silver;
+}
+.box {
+    background: #f4f4f4; 
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+.log-box {
+    height: 270px;
+    overflow: hidden;
+}
+.active-session {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.active-session img {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+}
+#splash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 9999;
+    opacity: 1;
+    animation: fadeInOut 3s ease-in-out forwards;
+}
+#splash h1 {
+    font-size: 3rem;
+    animation: scaleUp 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 1; }
+    90% { opacity: 0; }
+    100% { display: none; }
+}
+
+@keyframes scaleUp {
+    0%, 90%{ transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
