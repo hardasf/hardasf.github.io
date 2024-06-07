@@ -4,7 +4,7 @@ const fs = require('fs');
 module.exports = {
   description: "Search corn video",
   role: "user",
-  coins: 1,
+  coins: 5,
   cooldown: 30,
   async execute(api, event, args, commands) {
     try {
