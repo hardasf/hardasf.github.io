@@ -2,16 +2,25 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = {
-    name: 'daily',
     description: 'Receive a random amount of coins (50 - 100) once per day.',
     coins: 0,
     role: "user",
-    cooldown: 10, // 24 hours in seconds
+    cooldown: 12, // 24 hours in seconds
     execute(api, event, args, command) {
         const userId = event.senderID;
-        const dailyFile = path.join(__dirname, `../database/daily/${userId}.json`);
-        const coinBalanceFile = path.join(__dirname, `../database/coin_balances/${userId}.json`);
+        const dailyDir = path.join(__dirname, '../database/daily');
+        const dailyFile = path.join(dailyDir, `${userId}.json`);
+        const coinBalanceDir = path.join(__dirname, '../database/coin_balances');
+        const coinBalanceFile = path.join(coinBalanceDir, `${userId}.json`);
         const now = new Date();
+
+        // Ensure the directories exist
+        if (!fs.existsSync(dailyDir)) {
+            fs.mkdirSync(dailyDir, { recursive: true });
+        }
+        if (!fs.existsSync(coinBalanceDir)) {
+            fs.mkdirSync(coinBalanceDir, { recursive: true });
+        }
 
         if (fs.existsSync(dailyFile)) {
             const lastClaimed = new Date(JSON.parse(fs.readFileSync(dailyFile, 'utf8')).lastClaimed);
