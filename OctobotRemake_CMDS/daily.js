@@ -5,6 +5,7 @@ module.exports = {
     name: 'daily',
     description: 'Receive a random amount of coins (50 - 100) once per day.',
     coins: 0,
+    role: "user",
     cooldown: 86400, // 24 hours in seconds
     execute(api, event, args, command) {
         const userId = event.senderID;
