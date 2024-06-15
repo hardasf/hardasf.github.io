@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     if (countdown === 0) {
       clearInterval(countdownInterval);
-      window.location.href = "http://yetanotherfbbot.zya.me/";
+      window.location.href = "https://octobot.speedsnippet.xyz/";
     }
   }, 1000);
 });
