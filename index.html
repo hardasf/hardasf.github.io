@@ -137,9 +137,14 @@
             });
 
             // Fetch projects data from the URL
-            const projectsUrl = 'https://example.com/projects.json'; // Replace with your actual URL
+            const projectsUrl = 'https://pastebin.com/raw/ySKrH86c'; // Replace with your actual URL
             fetch(projectsUrl)
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
                 .then(projects => {
                     projects.forEach(project => {
                         const projectCard = document.createElement('div');
@@ -154,7 +159,12 @@
                         projectsSection.appendChild(projectCard);
                     });
                 })
-                .catch(error => console.error('Error loading projects:', error));
+                .catch(error => {
+                    console.error('Error loading projects:', error);
+                    const errorMessage = document.createElement('p');
+                    errorMessage.textContent = 'Failed to load projects. Please try again later.';
+                    projectsSection.appendChild(errorMessage);
+                });
         });
     </script>
 </body>
