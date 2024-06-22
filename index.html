@@ -136,7 +136,7 @@
                 }, 1000); // Wait for loading modal to disappear
             });
 
-            // Fetch projects data from the URL
+            // Fetch projects data from the URL using Fetch API
             const projectsUrl = 'https://pastebin.com/raw/ySKrH86c'; // Replace with your actual URL
             fetch(projectsUrl)
                 .then(response => {
@@ -162,7 +162,7 @@
                 .catch(error => {
                     console.error('Error loading projects:', error);
                     const errorMessage = document.createElement('p');
-                    errorMessage.textContent = 'Failed to load projects. Please try again later.';
+                    errorMessage.textContent = `Failed to load projects. Please try again later. ${error}`;
                     projectsSection.appendChild(errorMessage);
                 });
         });
