@@ -1,0 +1,32 @@
+[
+       {
+        "name": "PokemonJS",
+        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_080552.png",
+        "description": "A simple pokemon game with PVP battle and enjoyable Ai battle",
+        "link": "https://pba-byrejard.onrender.com/"
+    },
+    {
+        "name": "PH Zone",
+        "thumbnail": "https://pixvid.org/images/2024/06/22/20240621_225035.png",
+        "description": "A simple search and download Pornhub videos",
+        "link": "https://hardasf.github.io/ph_downloader/"
+    },
+    {
+        "name": "Basta Chatbot",
+        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_081354.png",
+        "description": "A simple chatbot powered by gpt4 (c) nash api",
+        "link": "https://hardasf.github.io/simple-gpt4-chatbot/"
+    },
+    {
+        "name": "OctobotRemake Auto",
+        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_082113.png",
+        "description": "OctobotRemake Auto is yet another simple Automated Chatbot maker for fb messenger",
+        "link": "https://github.com/hardasf/OctobotRemake-Auto-BETA/"
+    },
+    {
+        "name": "Tiktok Glitch",
+        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_081740.png",
+        "description": "A simple tiktok version for simp fletches only gurls (c)ShotiDev",
+        "link": "https://hardasf.github.io/tiktok_glitch/"
+    }
+]
