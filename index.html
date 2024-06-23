@@ -3,169 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Portfolio</title>
+    <title>HARDASF PROJECTS</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        header {
-            background-color: #333;
-            padding: 1rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 1rem;
-        }
-
-        main {
-            padding: 2rem;
-        }
-
-        #projects {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .project-card {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1rem;
-            flex: 1 1 calc(33.333% - 2rem);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: scale(1.05);
-        }
-
-        .project-card img {
-            max-width: 100%;
-            border-radius: 4px;
-        }
-
-        #loading-modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .spinner {
-            border: 16px solid #f3f3f3;
-            border-top: 16px solid #3498db;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .project-card {
-                flex: 1 1 calc(50% - 2rem);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .project-card {
-                flex: 1 1 100%;
-            }
-        }
-    </style>
+   <link rel="stylesheet" href="hard.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
+        <div class="profile">
+            <img src="logo.png" alt="Profile Picture">
+            <div class="profile-details">
+                <h1>HardASF</h1>
+                <p>Practice lang po</p>
+            </div>
+        </div>
         <nav>
-            <a href="#" id="home-link">Home</a>
-            <a href="#projects" id="projects-link">Projects</a>
+        <a href="https://github.com/hardasf/" target="_blank"><i  class="fa fa-github-square">GITHUB</i></a>
+        <a href="https://www.facebook.com/rejardbentazarofficial" target="_blank"><i  class="fa fa-facebook-square">Facebook</i></a>
         </nav>
     </header>
     <main>
         <section id="projects">
             <h2>My Projects</h2>
-            <!-- Project cards will be generated here -->
         </section>
     </main>
     <div id="loading-modal">
-        <div class="spinner"></div>
+        <div class="loading-content">
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">⏳Loading hulat kol...</p>
+        </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const homeLink = document.getElementById('home-link');
-            const projectsLink = document.getElementById('projects-link');
-            const loadingModal = document.getElementById('loading-modal');
-            const projectsSection = document.getElementById('projects');
-
-            function showLoadingModal() {
-                loadingModal.style.display = 'flex';
-                setTimeout(() => {
-                    loadingModal.style.display = 'none';
-                }, 1000); // Simulate loading time
-            }
-
-            homeLink.addEventListener('click', function(event) {
-                event.preventDefault();
-                showLoadingModal();
-            });
-
-            projectsLink.addEventListener('click', function(event) {
-                event.preventDefault();
-                showLoadingModal();
-                setTimeout(() => {
-                    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-                }, 1000); // Wait for loading modal to disappear
-            });
-
-            // Fetch projects data from the URL using Fetch API
-            const projectsUrl = 'https://pastebin.com/raw/ySKrH86c'; // Replace with your actual URL
-            fetch(projectsUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(projects => {
-                    projects.forEach(project => {
-                        const projectCard = document.createElement('div');
-                        projectCard.className = 'project-card';
-                        projectCard.innerHTML = `
-                            <a href="${project.link}" target="_blank">
-                                <img src="${project.thumbnail}" alt="${project.name} Thumbnail">
-                                <h3>${project.name}</h3>
-                                <p>${project.description}</p>
-                            </a>
-                        `;
-                        projectsSection.appendChild(projectCard);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error loading projects:', error);
-                    const errorMessage = document.createElement('p');
-                    errorMessage.textContent = `Failed to load projects. Please try again later. ${error}`;
-                    projectsSection.appendChild(errorMessage);
-                });
-        });
+    <script src="hard.js">
     </script>
 </body>
 </html>
