@@ -31,7 +31,7 @@ body {
 
 .video-card .video-info h3 {
     margin: 0 0 10px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .video-card .video-info p {
@@ -68,9 +68,9 @@ body {
 .modal-content {
     background-color: #fff;
     margin: 15% auto;
-    padding: 20px;
+    padding: 8px;
     border: 1px solid #888;
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     border-radius: 10px;
 }
