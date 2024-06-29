@@ -37,9 +37,9 @@
       },
        {
          "name": "Appstate Getter",
-         "thumbnail": "/appstate_getter/banner.png",
+         "thumbnail": "./appstate_getter/banner.png",
          "description": "Get Facebook Appstate for your c3c bot",
-         "link": "/appstate_getter"
+         "link": "./appstate_getter"
        }
        
 ]
