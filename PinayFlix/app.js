@@ -29,7 +29,7 @@ function displayVideos(videos) {
             : video.thumbnail;
 
         videoCard.innerHTML = `
-            <img style="width:100%" src="${thumbnail}" alt="${video.title}">
+            <img style="width:100%" src="${video.thumbnail}" alt="${video.title}">
             <h3>${video.title}</h3>
             <button onclick="playVideo('${video.iframeSrc}')">Play</button>
         `;
