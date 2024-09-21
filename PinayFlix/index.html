@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Welcome Popup -->
+    <div id="welcome-popup" class="popup">
+        <div class="popup-content">
+            <h2>Welcome!</h2>
+            <p>Enjoy watching videos.</p>
+            <button onclick="closeWelcomePopup()">Close</button>
+        </div>
+    </div>
+
+    <!-- Video Container -->
+    <div class="video-container" id="video-container">
+        <!-- Videos will be dynamically inserted here -->
+    </div>
+
+    <!-- Video Player Modal -->
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <iframe id="video-iframe" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
