@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Redirect with Progress Modal</title>
+    <!-- MaxCDN for Bootstrap CSS and JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .modal-content {
+            text-align: center;
+        }
+        .progress-bar {
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+<center>
+ <img src="logo.png" alt=":(" style="display: block; margin-left: auto; margin-right: auto;width:250px;">
+
+ <code> Welcome to Room Of Reds!! A home for you my niggaa</code>
+</center>
+<div class="container text-center mt-5">
+    <button class="btn btn-primary" onclick="redirectWithDelay('http://roomofreds.getenjoyment.net')">Continue</button>
+    <button class="btn btn-primary" onclick="redirectWithDelay('https://www.facebook.com/rightfall.haster')">Contact Dev</button>
+</div>
+
+<!-- Progress Modal -->
+<div class="modal" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="progressModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="progressModalLabel">Redirecting...</h5>
+            </div>
+            <div class="modal-body">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function redirectWithDelay(url) {
+        $('#progressModal').modal('show');
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 10;
+            $('.progress-bar').css('width', progress + '%');
+            if (progress >= 100) {
+                clearInterval(interval);
+                window.location.href = url;
+            }
+        }, 500);
+    }
+</script>
+
+</body>
+</html>
