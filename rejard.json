@@ -1,45 +1,16 @@
 [
-       {
-        "name": "PokemonJS",
-        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_080552.png",
-        "description": "A simple pokemon game with PVP battle and enjoyable Ai battle",
-        "link": "https://pukev1.onrender.com"
-    },
+       
     {
-        "name": "PH Zone",
-        "thumbnail": "https://pixvid.org/images/2024/06/22/20240621_225035.png",
-        "description": "A simple search and download Pornhub videos",
-        "link": "https://hardasf.github.io/ph_downloader/"
-    },
-    {
-        "name": "Basta Chatbot",
-        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_081354.png",
-        "description": "A simple chatbot powered by gpt4 (c) nash api",
-        "link": "https://hardasf.github.io/gpt4"
-    },
-    {
-        "name": "OctobotRemake Auto",
+        "name": "OctobotRemake Auto v6",
         "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_082113.png",
-        "description": "OctobotRemake Auto is yet another simple Automated Chatbot maker for fb messenger",
-        "link": "http://fi3.bot-hosting.net:23173"
-    },
-    {
-        "name": "Tiktok Glitch",
-        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_081740.png",
-        "description": "A simple tiktok version for simp fletches only gurls (c)ShotiDev",
-        "link": "https://hardasf.github.io/tiktok_glitch/"
+        "description": "Download OctobotRemake Auto is yet another simple Automated Chatbot maker for fb messenger",
+        "link": "https://apkadmin.com/saekdwba0zbl/OctobotRemake_v6.zip.html"
     },
       {
         "name": "CornHub",
         "thumbnail": "https://hardasf.github.io/CornHub/20240629_112036.png",
         "description": "A simple fully working cornsite powered by deku api",
         "link": "https://hardasf.github.io/CornHub/"
-      },
-       {
-         "name": "Appstate Getter",
-         "thumbnail": "https://hardasf.github.io/appstate_getter/banner.png",
-         "description": "Get Facebook Appstate for your c3c bot",
-         "link": "https://hardasf.github.io/appstate_getter/"
-       }
+      }
        
 ]
