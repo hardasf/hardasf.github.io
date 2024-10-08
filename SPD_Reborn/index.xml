@@ -1,0 +1,45 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+<generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator>
+<link href="https://shatteredpixel.com/feed_by_tag/SHPD_INGAME.xml" rel="self" type="application/atom+xml"/>
+<link href="https://shatteredpixel.com/" rel="alternate" type="text/html"/>
+<updated>2024-09-11T16:39:12+00:00</updated>
+<id>https://shatteredpixel.com/feed_by_tag/SHPD_INGAME.xml</id>
+<title type="html">Shattered Pixel</title>
+<subtitle>This is Shattered Pixel, the home page of Evan's various works, most notably Shattered Pixel Dungeon</subtitle>
+<author>
+<name>LeechShares Modder</name>
+</author>
+
+<entry>
+<title type="html">Shattered Pixel Dungeon v2.5.0!</title>
+<link href="https://shatteredpixel.com/blog/shattered-pixel-dungeon-v250.html" rel="alternate" type="text/html" title="Shattered Pixel Dungeon v2.5.0!"/>
+<published>2024-09-11T00:00:00+00:00</published>
+<updated>2024-09-11T00:00:00+00:00</updated>
+<id>https://shatteredpixel.com/blog/shattered-pixel-dungeon-v250</id>
+<author>
+<name>Evan Debenham</name>
+</author>
+<category term="SHPD_INGAME"/>
+<category term="SHPD_ICON_v464: ICON: CHANGES"/>
+<summary type="html">
+<![CDATA[ Hey Dungeoneers, Shattered v2.5.0 has been released! v2.5.0 includes a total overhaul to the journal, some new trinkets, and tonnes of smaller tweaks and balance changes. There are also new splash arts for each of the dungeons regions, viewable during loading screens! Be sure to check the changes screen for full details. ]]>
+</summary>
+</entry>
+
+<entry>
+<title type="html">Ten Years of Shattered Pixel Dungeon!</title>
+<link href="https://shatteredpixel.com/blog/ten-years-of-shattered-pixel-dungeon.html" rel="alternate" type="text/html" title="Ten Years of Shattered Pixel Dungeon!"/>
+<published>2024-08-05T00:00:00+00:00</published>
+<updated>2024-08-05T00:00:00+00:00</updated>
+<id>https://shatteredpixel.com/blog/ten-years-of-shattered-pixel-dungeon</id>
+<author>
+<name>Evan Debenham</name>
+</author>
+<category term="SHPD_INGAME"/>
+<category term="SHPD_ICON_v533: ITEM: 61"/>
+<category term="SHPD_ICON_v769: ITEM: 453"/>
+<summary type="html">
+<![CDATA[ On this day, 10 years ago, I released Shattered Pixel Dungeon v0.1.0. This tiny initial release was my first serious attempt at gamedev and was distributed to maybe 50 people on the Pixel Dungeon subreddit. Fast forward 10 years and Shattered is my full-time job, with roughly 5 million combined downloads and roughly 150 thousand combined sales over several platforms. ]]>
+</summary>
+</entry>
+</feed>
