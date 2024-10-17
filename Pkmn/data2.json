@@ -1,0 +1,14 @@
+{
+  "pokemonname": "Charizard",
+  "hp": 100,
+  "def": 45,
+  "speed": 80,
+  "sp_atk": 90,
+  "sp_def": 70,
+  "sprite_back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png",
+  "sprite_front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+  "moves": [
+    { "name": "Flame Thrower", "power": 30 },
+    { "name": "Dragon Claw", "power": 25 }
+  ]
+} 
