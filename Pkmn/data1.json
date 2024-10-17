@@ -2,13 +2,12 @@
   "pokemonname": "Blastoise",
   "hp": 100,
   "def": 50,
-  "speed": 60,
-  "sp_atk": 85,
-  "sp_def": 80,
   "sprite_back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/9.png",
   "sprite_front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
   "moves": [
     { "name": "Water Cannon", "power": 30 },
-    { "name": "Surf", "power": 25 }
+    { "name": "Surf", "power": 25 },
+    { "name": "Tackle", "power": 15 },
+    { "name": "Water Pulse", "power": 20 }
   ]
 }
