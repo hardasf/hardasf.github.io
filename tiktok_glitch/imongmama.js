@@ -1,13 +1,13 @@
 async function generateVideo() {
-  const apiUrl = "https://shoti.kenliejugarap.com/getvideo.php";
-  const apiKey = "shoti-3673ed33bc8186f@b37aba4c425fa@36@e6f30c0863dae181779bad3ee08@6ae95834eb@c8d1ccdf1d21a@b5@b4dc41afe7d@b8063f202@19c1c3fbf7bf1cbb@b1cac4b2d71fabc6c1b760ac0769490baaf4e6@c50";
+  const apiUrl =
+    "https://shoti.kenliejugarap.com/getvideo.php?apikey=shoti-3673ed33bc8186f@b37aba4c425fa@36@e6f30c0863dae181779bad3ee08@6ae95834eb@c8d1ccdf1d21a@b5@b4dc41afe7d@b8063f202@19c1c3fbf7bf1cbb@b1cac4b2d71fabc6c1b760ac0769490baaf4e6@c50";
 
   try {
     const loadingOverlay = document.getElementById("loading-overlay");
     loadingOverlay.style.display = "flex";
 
     // API Request
-    const { data } = await axios.post(apiUrl, { apikey: apiKey });
+    const { data } = await axios.post(apiUrl);
 
     if (data.status === true) {
       const videoPlayer = document.getElementById("video-player");
@@ -30,7 +30,7 @@ async function generateVideo() {
           <p><b>Username:</b> ${data.username}</p>
           <br>
           <a
-            href="https://www.facebook.com/leechshares"
+            href="https://www.facebook.com/rejardbentazarofficial"
             style="
               color: white;
               background-color: skyblue;
@@ -57,7 +57,7 @@ async function generateVideo() {
     }
   } catch (error) {
     console.error("Error fetching data:", error);
-    alert(`Contact your mama para mafix\n\nError Code:\n${error}`);
+    alert(`Contact Rejardgwapo para mafix\n\nError Code:\n${error}`);
   } finally {
     const loadingOverlay = document.getElementById("loading-overlay");
     loadingOverlay.style.display = "none";
