@@ -26,18 +26,18 @@ async function generateVideo() {
         modal.style.display = "block";
         videoInfoPopup.innerHTML = `
           <b>${data.title}</b>
-          <p><b>Toktik:</b> <a href="${data.tiktokUrl}">${data.tiktokUrl}</a></p>
+          <p><b>Toktik:</b> <i>${data.tiktokUrl}</i></p>
           <p><b>Username:</b> ${data.username}</p>
           <br>
           <a
-            href="https://www.facebook.com/rejardbentazarofficial"
+            href="#"
             style="
               color: white;
               background-color: skyblue;
               border: 2px solid skyblue;
               border-radius: 3px;
             "
-          >Contact Developer</a>
+          >Dev: Rai </a>
         `;
       };
 
@@ -57,7 +57,7 @@ async function generateVideo() {
     }
   } catch (error) {
     console.error("Error fetching data:", error);
-    alert(`Contact Rejardgwapo para mafix\n\nError Code:\n${error}`);
+    alert(`Contact LeechShares para mafix\n\nError Code:\n${error}`);
   } finally {
     const loadingOverlay = document.getElementById("loading-overlay");
     loadingOverlay.style.display = "none";
