@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SHAWTI App Download</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: #f0f2f5;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 90%;
+      margin: auto;
+    }
+
+    .app-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      margin-top: 15px;
+      font-size: 1.8em;
+    }
+
+    #version {
+      color: #555;
+      margin: 10px 0 15px 0;
+      font-size: 1.1em;
+    }
+
+    pre {
+      text-align: left;
+      background: #f8f8f8;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 0.95em;
+    }
+
+    #download-btn {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    #download-btn i {
+      margin-right: 8px;
+    }
+
+    #download-btn:hover {
+      background: #0056b3;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      pre {
+        font-size: 0.9em;
+      }
+      #download-btn {
+        font-size: 1em;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="app-icon.png" alt="App Icon" class="app-icon">
+    <h1>SHAWTI</h1>
+    <p id="version"><i class="fas fa-code-branch"></i> Version: ...</p>
+    <pre id="description"><i class="fas fa-info-circle"></i> Loading description...</pre>
+    <button id="download-btn"><i class="fas fa-download"></i> Download APK</button>
+  </div>
+
+  <script>
+    fetch('1.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('version').innerHTML = '<i class="fas fa-code-branch"></i> Version: ' + data.New_Ver;
+        document.getElementById('description').innerHTML = '<i class="fas fa-info-circle"></i> ' + data.Description;
+
+        const downloadBtn = document.getElementById('download-btn');
+        downloadBtn.addEventListener('click', () => {
+          Swal.fire({
+            title: 'Download SHAWTI?',
+            text: `Version ${data.New_Ver} - Are you sure you want to download the APK?`,
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, download!',
+            cancelButtonText: 'Cancel',
+            confirmButtonColor: '#007bff',
+            cancelButtonColor: '#d33'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = data.Install_Link;
+            }
+          });
+        });
+      })
+      .catch(error => {
+        document.getElementById('description').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to load app info.';
+        console.error('Error loading 1.json:', error);
+      });
+  </script>
+
+</body>
+                                                                     </html>
