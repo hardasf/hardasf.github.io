@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ewwn Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  max-width: 95%;
+  width: 380px;
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #343a40;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+  color: #495057;
+}
+
+input, select, button {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+}
+
+.deductions {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.deductions select {
+  flex: 1.5;
+}
+
+.deductions input {
+  flex: 1;
+}
+
+.deductions button {
+  padding: 8px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  flex: 0 0 auto;
+}
+
+.add-deduction-btn {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.calculate {
+  background-color: #198754;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.calculate:hover {
+  background-color: #157347;
+}
+
+select, input {
+  width: 100%;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2><i class="fas fa-calculator"></i> EWAN Calculator</h2><label for="days">Days Present (1–15):</label>
+<select id="days">
+  <option value="">Select Days</option>
+  <script>
+    for (let i = 1; i <= 15; i++) {
+      document.write(`<option value="${i}">${i}</option>`);
+    }
+  </script>
+</select>
+
+<label for="ot">OT Hours:</label>
+<input type="number" id="ot" placeholder="Enter OT hours" />
+
+<label>Deductions:</label>
+<div id="deductions-section">
+  <div class="deductions">
+    <select class="deduction-type">
+      <option value="PhilHealth">PhilHealth</option>
+      <option value="SSS">SSS</option>
+      <option value="Pag-IBIG">Pag-IBIG</option>
+      <option value="Health Card">Health Card</option>
+    </select>
+    <input type="number" placeholder="Amount" class="deduction-amount" />
+    <button onclick="removeDeduction(this)"><i class="fas fa-trash"></i></button>
+  </div>
+</div>
+<button class="add-deduction-btn" onclick="addDeduction()"><i class="fas fa-plus"></i> Add Deduction</button>
+
+<button class="calculate" onclick="calculateWage()">Calculate Wage</button>
+
+  </div>  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  <script>
+    const wagePerDay = 540;
+    const otPerHour = 67.5;
+
+    function addDeduction() {
+      const container = document.createElement('div');
+      container.className = 'deductions';
+      container.innerHTML = `
+        <select class="deduction-type">
+          <option value="PhilHealth">PhilHealth</option>
+          <option value="SSS">SSS</option>
+          <option value="Pag-IBIG">Pag-IBIG</option>
+          <option value="Health Card">Health Card</option>
+        </select>
+        <input type="number" placeholder="Amount" class="deduction-amount" />
+        <button onclick="removeDeduction(this)"><i class="fas fa-trash"></i></button>
+      `;
+      document.getElementById('deductions-section').appendChild(container);
+    }
+
+    function removeDeduction(btn) {
+      btn.parentElement.remove();
+    }
+
+    function calculateWage() {
+      const days = parseInt(document.getElementById('days').value);
+      const otHours = parseFloat(document.getElementById('ot').value) || 0;
+      if (!days) {
+        Swal.fire('Missing Input', 'Please select number of days present.', 'warning');
+        return;
+      }
+
+      let totalWage = (days * wagePerDay) + (otHours * otPerHour);
+      let totalDeduction = 0;
+
+      document.querySelectorAll('.deductions').forEach(row => {
+        const amount = parseFloat(row.querySelector('.deduction-amount').value) || 0;
+        totalDeduction += amount;
+      });
+
+      const netPay = totalWage - totalDeduction;
+
+      Swal.fire({
+        title: 'Net Pay Result',
+        html: `<p><strong>Total Wage:</strong> ₱${totalWage.toFixed(2)}</p>
+               <p><strong>Total Deductions:</strong> ₱${totalDeduction.toFixed(2)}</p>
+               <p><strong>Net Pay:</strong> <b>₱${netPay.toFixed(2)}</b></p>`,
+        icon: 'info'
+      });
+    }
+  </script></body>
+</html>
