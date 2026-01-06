@@ -1,1 +1,171 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSTRYRS PD Changelogs</title>
+
+<style>
+@font-face {
+  font-family: "Pixel";
+  src: local("Courier New");
+}
+
+body {
+  margin: 0;
+  background: #0b0b0b;
+  color: #ddd;
+  font-family: Pixel, monospace;
+}
+
+.container {
+  max-width: 420px;
+  margin: auto;
+  padding: 16px;
+  background: repeating-linear-gradient(
+    90deg,
+    #111 0px,
+    #111 20px,
+    #0c0c0c 20px,
+    #0c0c0c 40px
+  );
+  min-height: 100vh;
+}
+
+.title {
+  text-align: center;
+  font-size: 22px;
+  color: #ffcc33;
+  margin-bottom: 12px;
+}
+
+.section {
+  margin-bottom: 14px;
+}
+
+.section h3 {
+  color: #ffcc33;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.section p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.hidden {
+  display: none;
+}
+
+.read-more {
+  text-align: center;
+  margin-top: 20px;
+  color: #ffcc33;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="title">🔥 DSTRYRS PD Changelogs</div>
+
+  <div class="section">
+    <h3>Rework / Revamp Mana System</h3>
+    <p>
+      Mana in the original game was very imbalanced.  
+      Heroes no longer have unique mana gain.  
+      Mana is now gained by drinking Potion of Strength (+20 Mana).
+      <br><br>
+      <b>Exception:</b> Necromancer can still gain mana by killing enemies.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>BUFF ITEM(s)</h3>
+    <p>Broken Seal (Charge x3 Faster)</p>
+  </div>
+
+  <div class="section">
+    <h3>ITEM ADJUSTMENT(s)</h3>
+    <p>Scroll of Enchantment: Added Vampiric</p>
+  </div>
+
+  <div id="more" class="hidden">
+
+    <div class="section">
+      <h3>NEW QUEST</h3>
+      <p>
+        Quest: Rat Hide, Gloo Blob<br>
+        Prize 1: Blink Dagger, Potion of Strength<br>
+        Prize 2: Random Artifacts, Alchemy
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>NEW WEAPON</h3>
+      <p>
+        <b>Blink Dagger</b> (Plague Doctor Quest Only)<br>
+        Tier 2 Weapon<br>
+        Can Bleed Enemies<br>
+        Can Surprise Attack<br>
+        Very Fast Weapon
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>ELF REWORK</h3>
+      <p>
+        Added Subclass (Original game had none for Elf, Necro & Gnoll).<br>
+        Elves can now Scout, upgrade second skill,
+        and perform Preparation Attack.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Added Elf Skills</h3>
+      <p>
+        Skill 1: YRU Running!? – Grand Haste (5 turns)<br>
+        Skill 2: Micro – Grants Invisibility (20 turns)<br>
+        Skill 3: Fly Lipad yan bess – (20 turns)
+      </p>
+    </div>
+
+  </div>
+
+  <div class="read-more" onclick="toggleMore()">» READ MORE.........</div>
+
+  <div class="icons">
+    <img class="icon" src="https://i.imgur.com/LqYQZ4H.png">
+    <img class="icon" src="https://i.imgur.com/8xZQZ9F.png">
+    <img class="icon" src="https://i.imgur.com/W9YjQ8F.png">
+  </div>
+
+</div>
+
+<script>
+function toggleMore() {
+  const more = document.getElementById("more");
+  more.classList.toggle("hidden");
+}
+</script>
+
+</body>
+</html>
