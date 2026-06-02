@@ -4,31 +4,9 @@
         "thumbnail": "https://pokemonbattlearena.click/img/pokemon_logo.png",
         "description": "a fan-made browser battle game inspired by the classic Pokemon games. Challenge the AI in Single Player, compete in the Pokemon League, or go head-to-head against real players in Multiplayer and Ranked matches!",
         "link": "https://pokemonbattlearena.click/"
-    },
+    }
     
-    {
-        "name": "OctobotRemake Auto",
-        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_082113.png",
-        "description": "OctobotRemake Auto is yet another simple Automated Chatbot maker for fb messenger",
-        "link": "http://fi5.bot-hosting.net:22346/"
-    },
-    {
-        "name": "Tiktok Glitch",
-        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_081740.png",
-        "description": "A simple tiktok version for simp fletches only gurls (c)ShotiDev",
-        "link": "https://hardasf.github.io/tiktok_glitch/"
-    },
-      {
-        "name": "CornHub",
-        "thumbnail": "https://hardasf.github.io/CornHub/20240629_112036.png",
-        "description": "A simple fully working cornsite powered by deku api",
-        "link": "https://hardasf.github.io/CornHub/"
-      },
-       {
-         "name": "Appstate Getter",
-         "thumbnail": "https://hardasf.github.io/appstate_getter/banner.png",
-         "description": "Get Facebook Appstate for your c3c bot",
-         "link": "https://hardasf.github.io/appstate_getter/"
-       }
+    
+      
        
 ]
