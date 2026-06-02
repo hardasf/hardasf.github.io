@@ -1,9 +1,9 @@
 [
        {
-        "name": "PokemonJS",
-        "thumbnail": "https://pixvid.org/images/2024/06/22/20240623_080552.png",
+        "name": "Pokemon Battle Arena",
+        "thumbnail": "https://pokemonbattlearena.click/img/pokemon_logo.png",
         "description": "A simple pokemon game with PVP battle and enjoyable Ai battle",
-        "link": "https://pokebattle-beta.onrender.com/"
+        "link": "https://pokemonbattlearena.click/"
     },
     
     {
