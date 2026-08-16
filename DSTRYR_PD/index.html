@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DSTRYR Pixel Dungeon — Update 0.5</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% 0%,#40342a 0%,#17130f 42%,#070707 100%);
+    color:#e9e0d3;
+    font-family:"Press Start 2P",monospace;
+    overflow-x:hidden;
+}
+
+/* Pixel background */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.08;
+    background-image:
+        linear-gradient(#fff 1px,transparent 1px),
+        linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:32px 32px;
+}
+
+/* Torch glow */
+
+.torch{
+    position:fixed;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    filter:blur(85px);
+    opacity:.12;
+    pointer-events:none;
+}
+
+.torch.one{
+    left:-100px;
+    top:100px;
+    background:#ff7925;
+}
+
+.torch.two{
+    right:-100px;
+    top:250px;
+    background:#ffd05c;
+}
+
+/* Header */
+
+header{
+    text-align:center;
+    padding:45px 15px 35px;
+    border-bottom:4px solid #302820;
+    background:rgba(0,0,0,.35);
+}
+
+.logo{
+    display:inline-block;
+    padding:20px;
+    background:#171310;
+    border:4px solid #645346;
+    box-shadow:
+        0 0 0 4px #080808,
+        8px 8px 0 #050505;
+}
+
+.logo h1{
+    font-size:clamp(20px,6vw,35px);
+    line-height:1.5;
+    color:#e9c46a;
+    text-shadow:3px 3px 0 #57391b;
+}
+
+.logo p{
+    margin-top:12px;
+    font-size:9px;
+    color:#a99f95;
+}
+
+.version{
+    margin:20px auto 0;
+    width:max-content;
+    padding:11px 15px;
+    background:#8c3b27;
+    border:3px solid #d16b43;
+    box-shadow:4px 4px 0 #32130d;
+    color:#fff;
+    font-size:9px;
+}
+
+/* Main */
+
+.container{
+    width:min(1050px,92%);
+    margin:30px auto 70px;
+}
+
+/* Top buttons */
+
+.actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.action-btn{
+    display:block;
+    padding:17px 10px;
+    text-align:center;
+    text-decoration:none;
+    font-family:inherit;
+    font-size:8px;
+    line-height:1.7;
+    border:3px solid;
+    box-shadow:5px 5px 0 #050505;
+    transition:
+        transform .18s ease,
+        filter .18s ease;
+}
+
+.action-btn:hover{
+    transform:translateY(-3px);
+    filter:brightness(1.15);
+}
+
+.action-btn:active{
+    transform:translateY(2px);
+    box-shadow:2px 2px 0 #050505;
+}
+
+.download{
+    color:#fff;
+    background:#8d3d27;
+    border-color:#d36b43;
+}
+
+.facebook{
+    color:#fff;
+    background:#294f7b;
+    border-color:#628dc2;
+}
+
+/* Expandable section */
+
+.update-section{
+    margin-bottom:22px;
+}
+
+/* Header button */
+
+.section-toggle{
+    position:relative;
+    width:100%;
+    min-height:65px;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+
+    padding:17px;
+
+    color:#e6bd67;
+    background:
+        linear-gradient(145deg,#2b241f,#15120f);
+
+    border:4px solid #55483d;
+
+    box-shadow:
+        0 0 0 3px #090909,
+        6px 6px 0 #050505;
+
+    font-family:inherit;
+    font-size:10px;
+    line-height:1.7;
+
+    text-align:left;
+
+    transition:
+        border-color .2s ease,
+        transform .15s ease,
+        background .2s ease;
+}
+
+.section-toggle:hover{
+    border-color:#c2934c;
+}
+
+.section-toggle:active{
+    transform:translateY(2px);
+}
+
+.section-toggle.open{
+    border-color:#bd8e48;
+}
+
+.section-icon{
+    font-size:18px;
+    flex-shrink:0;
+}
+
+.section-arrow{
+    flex-shrink:0;
+    font-size:14px;
+    color:#d9a54e;
+
+    transition:
+        transform .35s cubic-bezier(.4,0,.2,1);
+}
+
+.section-toggle.open .section-arrow{
+    transform:rotate(180deg);
+}
+
+/*
+    IMPORTANT:
+    The content itself uses max-height instead of
+    display:none so the browser can animate it.
+*/
+
+.section-content{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+
+    transition:
+        max-height .65s cubic-bezier(.4,0,.2,1),
+        opacity .35s ease,
+        margin-top .4s ease;
+
+    margin-top:0;
+}
+
+.section-content.open{
+    opacity:1;
+    margin-top:16px;
+}
+
+/* Content cards */
+
+.change-card{
+    margin-bottom:16px;
+    padding:20px;
+
+    background:
+        linear-gradient(145deg,#29231e,#14110f);
+
+    border:4px solid #484038;
+
+    box-shadow:
+        0 0 0 3px #090909,
+        5px 5px 0 #050505;
+
+    transform:translateY(-8px);
+    opacity:0;
+
+    transition:
+        transform .5s ease,
+        opacity .5s ease;
+}
+
+.section-content.open .change-card{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.change-card:nth-child(2){
+    transition-delay:.04s;
+}
+
+.change-card:nth-child(3){
+    transition-delay:.08s;
+}
+
+.change-card:nth-child(4){
+    transition-delay:.12s;
+}
+
+.change-card:nth-child(5){
+    transition-delay:.16s;
+}
+
+.change-card h2{
+    margin-bottom:15px;
+    color:#e5bd67;
+    font-size:12px;
+    line-height:1.8;
+}
+
+.change-card h3{
+    margin:18px 0 10px;
+    color:#d69d4b;
+    font-size:9px;
+}
+
+.change-card p,
+.change-card li{
+    color:#bdb4aa;
+    font-size:8px;
+    line-height:2.1;
+}
+
+.change-card ul{
+    padding-left:18px;
+}
+
+.highlight{
+    color:#f0d69a;
+}
+
+.green{
+    color:#69d76d;
+}
+
+.red{
+    color:#d96554;
+}
+
+.gold{
+    color:#e6bd67;
+}
+
+/* Boss grid */
+
+.boss-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(270px,1fr));
+    gap:20px;
+}
+
+/* Boss card */
+
+.boss-card{
+    position:relative;
+    padding:20px;
+
+    background:
+        linear-gradient(145deg,#27211d,#151311);
+
+    border:4px solid #4b4036;
+
+    box-shadow:
+        0 0 0 3px #0b0b0b,
+        7px 7px 0 #080808;
+
+    transform:translateY(-8px);
+    opacity:0;
+
+    transition:
+        transform .5s ease,
+        opacity .5s ease,
+        border-color .2s ease;
+}
+
+.section-content.open .boss-card{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.boss-card:hover{
+    border-color:#b88b49;
+    transform:translateY(-4px);
+}
+
+.boss-card::before,
+.boss-card::after{
+    content:"";
+    position:absolute;
+    width:9px;
+    height:9px;
+    background:#b48a4b;
+}
+
+.boss-card::before{
+    top:-4px;
+    left:-4px;
+}
+
+.boss-card::after{
+    right:-4px;
+    bottom:-4px;
+}
+
+/* Boss header */
+
+.boss-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding-bottom:15px;
+
+    border-bottom:2px solid #3b332d;
+}
+
+.boss-name{
+    color:#f0d7a0;
+    font-size:12px;
+}
+
+.buff{
+    color:#63db69;
+    font-size:16px;
+
+    animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        opacity:.45;
+    }
+}
+
+.change{
+    margin-top:18px;
+    color:#bdb5ad;
+    font-size:8px;
+    line-height:2;
+}
+
+.change strong{
+    color:#eee7dc;
+}
+
+.hp-section{
+    margin-top:17px;
+}
+
+.hp-label{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:7px;
+
+    color:#9c948c;
+    font-size:8px;
+}
+
+.hp-bar{
+    height:16px;
+    padding:2px;
+
+    background:#0a0908;
+    border:2px solid #050505;
+}
+
+.hp-fill{
+    height:100%;
+    width:var(--hp);
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #b83227 0 10px,
+            #d34a35 10px 13px
+        );
+}
+
+.old-hp{
+    margin-top:9px;
+    color:#716961;
+    font-size:7px;
+}
+
+.speed{
+    display:inline-block;
+
+    margin-top:15px;
+    padding:8px;
+
+    background:#46361e;
+    border:2px solid #a27c3d;
+
+    color:#efc76a;
+    font-size:8px;
+}
+
+/* Footer */
+
+footer{
+    padding:35px 15px;
+    text-align:center;
+
+    background:#0b0a09;
+    border-top:4px solid #302923;
+
+    color:#69615a;
+    font-size:8px;
+    line-height:2;
+}
+
+footer span{
+    color:#a9854d;
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    header{
+        padding-top:35px;
+    }
+
+    .logo{
+        padding:15px;
+    }
+
+    .logo h1{
+        font-size:19px;
+    }
+
+    .actions{
+        grid-template-columns:1fr;
+    }
+
+    .section-toggle{
+        font-size:9px;
+        padding:15px;
+    }
+
+    .section-icon{
+        font-size:15px;
+    }
+
+    .boss-grid{
+        grid-template-columns:1fr;
+    }
+
+    .change-card{
+        padding:17px;
+    }
+
+    .change-card h2{
+        font-size:10px;
+    }
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:9px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0b0a09;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#514335;
+    border:2px solid #0b0a09;
+}
+</style>
+</head>
+
+<body>
+
+<div class="torch one"></div>
+<div class="torch two"></div>
+
+<header>
+
+    <div class="logo">
+        <h1>DSTRYR</h1>
+        <p>PIXEL DUNGEON</p>
+    </div>
+
+    <div class="version">
+        ⚔ UPDATE 0.5 ⚔
+    </div>
+
+</header>
+
+
+<main class="container">
+
+<!-- ==========================================
+     DOWNLOAD + FACEBOOK AT THE TOP
+========================================== -->
+
+<div class="actions">
+
+    <a
+        class="action-btn download"
+        href="DSTRYR-Pixel-Dungeon-v0.5.apk"
+        download
+    >
+        ⬇ DOWNLOAD 0.5 UPDATE
+    </a>
+
+    <a
+        class="action-btn facebook"
+        href="https://fb.com/leechshares"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        f FACEBOOK / LEECHSHARES
+    </a>
+
+</div>
+
+
+<!-- ==========================================
+     NEW CONTENT
+========================================== -->
+
+<section class="update-section">
+
+    <button
+        class="section-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="contentPanel"
+    >
+
+        <span>
+            <span class="section-icon">📜</span>
+            NEW CONTENT & SYSTEM REWORKS
+        </span>
+
+        <span class="section-arrow">▼</span>
+
+    </button>
+
+
+    <div
+        class="section-content"
+        id="contentPanel"
+    >
+
+        <!-- Mana -->
+
+        <div class="change-card">
+
+            <h2>🔮 REWORK / REVAMP — MANA SYSTEM</h2>
+
+            <p>
+                In the Original Game mana is very
+                <span class="red">imbalance</span>.
+            </p>
+
+            <p style="margin-top:12px;">
+                Heroes' unique mana earning has been removed.
+                Heroes can now make mana by drinking
+                <span class="highlight">
+                    Potion of Strength
+                </span>.
+            </p>
+
+            <h3>⚗ POTION OF STRENGTH</h3>
+
+            <p>
+                Drinking Potion of Strength:
+                <span class="green">+20 MANA</span>
+            </p>
+
+            <h3>☠ NECROMANCER</h3>
+
+            <p>
+                Necromancer can still earn mana when
+                <span class="green">killing an enemy</span>.
+            </p>
+
+        </div>
+
+
+        <!-- Items -->
+
+        <div class="change-card">
+
+            <h2>⚔ ITEM CHANGES</h2>
+
+            <h3>BUFF ITEM(S)</h3>
+
+            <p>
+                <span class="highlight">
+                    BrokenSeal
+                </span>
+            </p>
+
+            <p>
+                Charge regeneration:
+                <span class="green">3× FASTER</span>
+            </p>
+
+            <h3>ITEM ADJUSTMENT(S)</h3>
+
+            <p>
+                Scroll of Enchantment now has:
+                <span class="green">Vampiric</span>
+            </p>
+
+        </div>
+
+
+        <!-- Quest -->
+
+        <div class="change-card">
+
+            <h2>📜 NEW QUEST</h2>
+
+            <h3>QUEST</h3>
+
+            <ul>
+                <li>Rat Hide</li>
+                <li>Gloo Blob</li>
+            </ul>
+
+            <h3>🏆 PRIZE 1</h3>
+
+            <ul>
+                <li>Blink Dagger</li>
+                <li>Potion of Strength</li>
+            </ul>
+
+            <h3>🎁 PRIZE 2</h3>
+
+            <ul>
+                <li>Random Artifacts</li>
+                <li>Alchemy</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Blink Dagger -->
+
+        <div class="change-card">
+
+            <h2>🗡 NEW WEAPON — BLINK DAGGER</h2>
+
+            <p>
+                <span class="highlight">
+                    Only Available in Plague Doctor Quest
+                </span>
+            </p>
+
+            <h3>TIER 2 WEAPON</h3>
+
+            <ul>
+                <li>Can Bleed Enemies</li>
+                <li>Can Surprise Attack</li>
+                <li>Very Fast Weapon</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Elf -->
+
+        <div class="change-card">
+
+            <h2>🧝 ELF REWORK</h2>
+
+            <p>
+                Added Subclass:
+                <span class="gold">SCOUT</span>
+            </p>
+
+            <p style="margin-top:12px;">
+                Elves can now Scout, allowing them to
+                upgrade their Second Skill and perform
+                <span class="gold">
+                    Preparation Attacks
+                </span>.
+            </p>
+
+            <h3>⚡ SKILL 1 — YRU RUNNING!?</h3>
+
+            <p>
+                Grand Haste Buff for
+                <span class="green">5 turns</span>,
+                increasing movement speed.
+            </p>
+
+            <h3>👻 SKILL 2 — MICRO</h3>
+
+            <p>
+                Grants Invisibility for
+                <span class="green">20 turns</span>.
+            </p>
+
+            <h3>🪽 SKILL 3 — FLY</h3>
+
+            <p>
+                Lipad yan bess for
+                <span class="green">20 turns</span>.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     BOSS BALANCE
+========================================== -->
+
+<section class="update-section">
+
+    <button
+        class="section-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="bossPanel"
+    >
+
+        <span>
+            <span class="section-icon">⚒</span>
+            BOSS BALANCE UPDATE
+        </span>
+
+        <span class="section-arrow">▼</span>
+
+    </button>
+
+
+    <div
+        class="section-content"
+        id="bossPanel"
+    >
+
+        <div class="boss-grid">
+
+            <!-- DM300 -->
+
+            <div class="boss-card">
+
+                <div class="boss-header">
+                    <div class="boss-name">
+                        DM300
+                    </div>
+
+                    <div class="buff">⬆</div>
+                </div>
+
+                <div class="change">
+                    Increase HP from
+                    <strong>200 → 250</strong>
+                </div>
+
+                <div class="hp-section">
+
+                    <div class="hp-label">
+                        <span>HP</span>
+                        <span>250</span>
+                    </div>
+
+                    <div class="hp-bar">
+                        <div
+                            class="hp-fill"
+                            style="--hp:50%;"
+                        ></div>
+                    </div>
+
+                    <div class="old-hp">
+                        PREVIOUS: 200 HP
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Gloo -->
+
+            <div class="boss-card">
+
+                <div class="boss-header">
+                    <div class="boss-name">
+                        GLOO
+                    </div>
+
+                    <div class="buff">⬆</div>
+                </div>
+
+                <div class="change">
+                    Increase HP from
+                    <strong>100 → 150</strong>
+                </div>
+
+                <div class="hp-section">
+
+                    <div class="hp-label">
+                        <span>HP</span>
+                        <span>150</span>
+                    </div>
+
+                    <div class="hp-bar">
+                        <div
+                            class="hp-fill"
+                            style="--hp:30%;"
+                        ></div>
+                    </div>
+
+                    <div class="old-hp">
+                        PREVIOUS: 100 HP
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Tengu -->
+
+            <div class="boss-card">
+
+                <div class="boss-header">
+                    <div class="boss-name">
+                        TENGU
+                    </div>
+
+                    <div class="buff">⬆</div>
+                </div>
+
+                <div class="change">
+                    Increase HP from
+                    <strong>120 → 220</strong>
+                </div>
+
+                <div class="hp-section">
+
+                    <div class="hp-label">
+                        <span>HP</span>
+                        <span>220</span>
+                    </div>
+
+                    <div class="hp-bar">
+                        <div
+                            class="hp-fill"
+                            style="--hp:44%;"
+                        ></div>
+                    </div>
+
+                    <div class="old-hp">
+                        PREVIOUS: 120 HP
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- King -->
+
+            <div class="boss-card">
+
+                <div class="boss-header">
+                    <div class="boss-name">
+                        KING
+                    </div>
+
+                    <div class="buff">⬆</div>
+                </div>
+
+                <div class="change">
+                    Increase HP from
+                    <strong>300 → 400</strong>
+                </div>
+
+                <div class="hp-section">
+
+                    <div class="hp-label">
+                        <span>HP</span>
+                        <span>400</span>
+                    </div>
+
+                    <div class="hp-bar">
+                        <div
+                            class="hp-fill"
+                            style="--hp:80%;"
+                        ></div>
+                    </div>
+
+                    <div class="old-hp">
+                        PREVIOUS: 300 HP
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Yog -->
+
+            <div class="boss-card">
+
+                <div class="boss-header">
+                    <div class="boss-name">
+                        YOG
+                    </div>
+
+                    <div class="buff">⬆</div>
+                </div>
+
+                <div class="change">
+                    Increase HP from
+                    <strong>200 → 500</strong>
+                </div>
+
+                <div class="hp-section">
+
+                    <div class="hp-label">
+                        <span>HP</span>
+                        <span>500</span>
+                    </div>
+
+                    <div class="hp-bar">
+                        <div
+                            class="hp-fill"
+                            style="--hp:100%;"
+                        ></div>
+                    </div>
+
+                    <div class="old-hp">
+                        PREVIOUS: 200 HP
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Rotting Fist -->
+
+            <div class="boss-card">
+
+                <div class="boss-header">
+                    <div class="boss-name">
+                        ROTTING FIST
+                    </div>
+
+                    <div class="buff">⬆</div>
+                </div>
+
+                <div class="change">
+                    Increase HP from
+                    <strong>300 → 350</strong>
+                </div>
+
+                <div class="hp-section">
+
+                    <div class="hp-label">
+                        <span>HP</span>
+                        <span>350</span>
+                    </div>
+
+                    <div class="hp-bar">
+                        <div
+                            class="hp-fill"
+                            style="--hp:70%;"
+                        ></div>
+                    </div>
+
+                    <div class="old-hp">
+                        PREVIOUS: 300 HP
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Burning Fist -->
+
+            <div class="boss-card">
+
+                <div class="boss-header">
+                    <div class="boss-name">
+                        BURNING FIST
+                    </div>
+
+                    <div class="buff">⬆</div>
+                </div>
+
+                <div class="change">
+                    Increase HP from
+                    <strong>200 → 250</strong>
+                </div>
+
+                <div class="hp-section">
+
+                    <div class="hp-label">
+                        <span>HP</span>
+                        <span>250</span>
+                    </div>
+
+                    <div class="hp-bar">
+                        <div
+                            class="hp-fill"
+                            style="--hp:50%;"
+                        ></div>
+                    </div>
+
+                    <div class="old-hp">
+                        PREVIOUS: 200 HP
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- GreatCrab -->
+
+            <div class="boss-card">
+
+                <div class="boss-header">
+                    <div class="boss-name">
+                        GREATCRAB
+                    </div>
+
+                    <div class="buff">⬆</div>
+                </div>
+
+                <div class="change">
+
+                    <strong>Speed</strong><br>
+                    NORMAL →
+                    <span class="gold">FAST</span>
+
+                    <br><br>
+
+                    <strong>HP</strong><br>
+                    25 →
+                    <span class="red">18</span>
+
+                </div>
+
+                <div class="speed">
+                    ⚡ FAST SPEED
+                </div>
+
+                <div class="hp-section">
+
+                    <div class="hp-label">
+                        <span>HP</span>
+                        <span>18</span>
+                    </div>
+
+                    <div class="hp-bar">
+                        <div
+                            class="hp-fill"
+                            style="--hp:36%;"
+                        ></div>
+                    </div>
+
+                    <div class="old-hp">
+                        PREVIOUS: 25 HP
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    DSTRYR PIXEL DUNGEON<br>
+
+    <span>
+        ⚔ UPDATE 0.5 • BOSS • ITEMS • QUESTS • CLASSES ⚔
+    </span>
+
+</footer>
+
+
+<script>
+
+/*
+==================================================
+SMOOTH EXPAND / COLLAPSE
+==================================================
+*/
+
+const sectionButtons =
+    document.querySelectorAll(".section-toggle");
+
+sectionButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const panel =
+            document.getElementById(
+                button.getAttribute("aria-controls")
+            );
+
+        const isOpen =
+            button.classList.contains("open");
+
+        if(isOpen){
+
+            /* CLOSE */
+
+            panel.style.maxHeight =
+                panel.scrollHeight + "px";
+
+            requestAnimationFrame(() => {
+
+                panel.style.maxHeight = "0px";
+                panel.classList.remove("open");
+
+            });
+
+            button.classList.remove("open");
+            button.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }else{
+
+            /* OPEN */
+
+            panel.classList.add("open");
+
+            panel.style.maxHeight =
+                panel.scrollHeight + "px";
+
+            button.classList.add("open");
+
+            button.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+        }
+
+    });
+
+});
+
+
+/*
+==================================================
+KEEP OPEN PANEL HEIGHT CORRECT ON RESIZE
+==================================================
+*/
+
+window.addEventListener("resize", () => {
+
+    document
+        .querySelectorAll(".section-content.open")
+        .forEach(panel => {
+
+            panel.style.maxHeight =
+                panel.scrollHeight + "px";
+
+        });
+
+});
+
+
+/*
+==================================================
+DOWNLOAD BUTTON
+==================================================
+*/
+
+const downloadButton =
+    document.querySelector(".download");
+
+downloadButton.addEventListener("click", () => {
+
+    /*
+      Change this filename/path to your
+      actual APK location.
+
+      Example:*/
+      files/DSTRYR-Pixel-Dungeon-v0.5.apk
+    
+
+    console.log(
+        "Downloading DSTRYR Pixel Dungeon v0.5..."
+    );
+
+});
+
+</script>
+
+</body>
+</html>
