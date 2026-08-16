@@ -4,8 +4,14 @@
         "thumbnail": "https://pokemonbattlearena.click/img/pokemon_logo.png",
         "description": "a fan-made browser battle game inspired by the classic Pokemon games. Challenge the AI in Single Player, compete in the Pokemon League, or go head-to-head against real players in Multiplayer and Ranked matches!",
         "link": "https://pokemonbattlearena.click/"
+    }, 
+       
+    {
+        "name": "DSTRYR Pixel Dungeon",
+        "thumbnail": "DSTRYR_PD/logo.jpg",
+        "description": "a turn-based rpg inspired by Pixel Dungeon",
+        "link": "https://hardasf.github.io/DSTRYR_PD/"
     }
-    
     
       
        
