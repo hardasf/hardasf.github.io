@@ -9,7 +9,11 @@
     {
         "name": "DSTRYR Pixel Dungeon",
         "thumbnail": "DSTRYR_PD/Screenshot_20260817-001748.jpg",
-        "description": "A Roguelike RPG, with randomly generated levels, items, enemies, and traps! Based on the source code of Pixel Dungeon by Watabou",
+        "description": "Pixel Dungeon is a traditional roguelike game with pixel-art graphics and simple interface.
+
+Explore the depths of Pixel Dungeon, collect useful items, fight fierce monsters to find Amulet of Yendor (surprise!) - the ultimate artifact of this game world.
+
+Many people consider this game very difficult and luck-based. Anyway, you will die often. You are warned! :)",
         "link": "https://hardasf.github.io/DSTRYR_PD/"
     }
     
