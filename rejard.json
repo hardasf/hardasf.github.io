@@ -9,7 +9,7 @@
     {
         "name": "DSTRYR Pixel Dungeon",
         "thumbnail": "DSTRYR_PD/Screenshot_20260817-001748.jpg",
-        "description": "a turn-based rpg inspired by Pixel Dungeon",
+        "description": "A Roguelike RPG, with randomly generated levels, items, enemies, and traps! Based on the source code of Pixel Dungeon by Watabou",
         "link": "https://hardasf.github.io/DSTRYR_PD/"
     }
     
