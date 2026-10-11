@@ -2,7 +2,7 @@
   "appUpdate": {
     "versionCode": 239,
     "versionName": "2.38.68-stable",
-    "apkUrl": "https://YOUR-DIRECT-APK-DOWNLOAD-URL/SongHub.apk",
+    "apkUrl": "https://example.com/SongHub.apk",
     "changelog": "Bug fixes and performance improvements.",
     "forceUpdate": false
   }
